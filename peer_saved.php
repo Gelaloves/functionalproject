@@ -32,17 +32,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $assessed_by = $conn->real_escape_string($_POST['assessed_by']);
     $date = !empty($_POST['date']) ? $conn->real_escape_string($_POST['date']) : date('Y-m-d'); // Default to current date if not provided
     $total_score = intval($_POST['total_score']);
-    
-    $creativity_and_innovation_rating_1 = intval($_POST['creativity_and_innovation_rating_1']);
-    $creativity_and_innovation_rating_2 = intval($_POST['creativity_and_innovation_rating_2']);
 
     // Prepare SQL query
-    $stmt = $conn->prepare("INSERT INTO peer (employee_name, position, place_of_assignment, contract_period, comments, assessed_by, date, total_score, creativity_and_innovation_rating_1, creativity_and_innovation_rating_2)
-                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO peer (employee_name, position, place_of_assignment, contract_period, comments, assessed_by, date, total_score) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
     if (!$stmt) {
         die("Failed to prepare statement: " . $conn->error);
     }
-    $stmt->bind_param("sssssssiii", $employee, $position, $assignment, $contract, $comments, $assessed_by, $date, $total_score, $creativity_and_innovation_rating_1, $creativity_and_innovation_rating_2);
+    $stmt->bind_param("sssssssi", $employee, $position, $assignment, $contract, $comments, $assessed_by, $date, $total_score);
     
     // Execute SQL query
     if ($stmt->execute()) {
