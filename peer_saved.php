@@ -4,17 +4,19 @@ $username = "root";
 $password = "";
 $dbname = "request_form";
 
+// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Debugging: Print the POST array
-    echo '<pre>';
-    print_r($_POST);
-    echo '</pre>';
+    // echo '<pre>';
+    // print_r($_POST);
+    // echo '</pre>';
     
     // Check if total_score is set in $_POST
     if (!isset($_POST['total_score']) || $_POST['total_score'] === '') {
@@ -31,19 +33,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $date = !empty($_POST['date']) ? $conn->real_escape_string($_POST['date']) : date('Y-m-d'); // Default to current date if not provided
     $total_score = intval($_POST['total_score']);
     
-    // Debugging: Check total_score value
-    echo "Total Score: " . $total_score;
-    
-    // Prepare SQL query
-    $sql_peer = "INSERT INTO peer (employee_name, position, place_of_assignment, contract_period, comments, assessed_by, date, total_score)
-                 VALUES ('$employee', '$position', '$assignment', '$contract', '$comments', '$assessed_by', '$date', $total_score)";
+    $creativity_and_innovation_rating_1 = intval($_POST['creativity_and_innovation_rating_1']);
+    $creativity_and_innovation_rating_2 = intval($_POST['creativity_and_innovation_rating_2']);
 
-    // Execute SQL query
-    if ($conn->query($sql_peer) === TRUE) {
-        header("Location: index.php");
-    } else {
-        echo "Error: " . $sql_peer . "<br>" . $conn->error;
+    // Prepare SQL query
+    $stmt = $conn->prepare("INSERT INTO peer (employee_name, position, place_of_assignment, contract_period, comments, assessed_by, date, total_score, creativity_and_innovation_rating_1, creativity_and_innovation_rating_2)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    if (!$stmt) {
+        die("Failed to prepare statement: " . $conn->error);
     }
+    $stmt->bind_param("sssssssiii", $employee, $position, $assignment, $contract, $comments, $assessed_by, $date, $total_score, $creativity_and_innovation_rating_1, $creativity_and_innovation_rating_2);
+    
+    // Execute SQL query
+    if ($stmt->execute()) {
+        header("Location: index.php");
+        exit();
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+    
+    $stmt->close();
 }
 
 $conn->close();

@@ -9,8 +9,28 @@ if (!isset($_SESSION['admin_id'])) {
 
 require_once('DBConnection.php');
 
+// Fetch user role from session
+$user_role = $_SESSION['role'] ?? 'Guest'; // Default to 'Guest' if role is not set
+
+// Define allowed pages based on roles
+$allowed_pages = [
+    'Admin' => ['home', 'form_staff_from_peer', 'form_staff_from_hr', 'form_staff_from_campus_director', 'form_staff_supervisor','manage_account.php'],
+    'Human Resource' => ['home', 'form_staff_from_hr', 'form_staff_from_peer'],
+    'Campus Director' => ['home', 'form_staff_from_campus_director', 'form_staff_from_peer'],
+    'Peer' => ['home', 'form_staff_from_peer'],
+    'Supervisor' => ['home', 'form_staff_supervisor', 'form_staff_from_peer'],
+];
+
 // Default page is 'home' if not specified in URL
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
+
+// Check if the page is allowed for the user role
+if (!in_array($page, $allowed_pages[$user_role] ?? [])) {
+    // If not allowed, show a 403 Forbidden message
+    header('HTTP/1.0 403 Forbidden');
+    echo "<h2>403 Forbidden</h2>";
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
@@ -57,7 +77,6 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
                 </div>
                 <div class="menu-inner-shadow"></div>
                 <ul class="menu-inner py-1">
-                    <!-- Your menu items -->
                     <!-- Dashboard -->
                     <li class="menu-item <?php echo ($page == 'home') ? 'active' : '' ?>">
                         <a href="./?page=home" class="menu-link">
@@ -65,31 +84,39 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
                             <div data-i18n="Analytics">Home</div>
                         </a>
                     </li>
-                    <!-- Other menu items -->
+                    <!-- Form links based on role -->
+                    <?php if ($user_role === 'Admin' || in_array('form_staff_from_peer', $allowed_pages[$user_role] ?? [])): ?>
                     <li class="menu-item <?php echo ($page == 'form_staff_from_peer') ? 'active' : '' ?>">
                         <a href="./?page=form_staff_from_peer" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-chalkboard"></i>
                             <div data-i18n="Class">Performance-Appraisal-for-Staff-from-Peer</div>
                         </a>
                     </li>
+                    <?php endif; ?>
+                    <?php if ($user_role === 'Admin' || in_array('form_staff_from_hr', $allowed_pages[$user_role] ?? [])): ?>
                     <li class="menu-item <?php echo ($page == 'form_staff_from_hr') ? 'active' : '' ?>">
                         <a href="./?page=form_staff_from_hr" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-user"></i>
                             <div data-i18n="Students">Performance-Appraisal-for-Staff-from-HR</div>
                         </a>
                     </li>
+                    <?php endif; ?>
+                    <?php if ($user_role === 'Admin' || in_array('form_staff_from_campus_director', $allowed_pages[$user_role] ?? [])): ?>
                     <li class="menu-item <?php echo ($page == 'form_staff_from_campus_director') ? 'active' : '' ?>">
                         <a href="./?page=form_staff_from_campus_director" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-list-ol"></i>
                             <div data-i18n="Assessments">Performance-Appraisal-for-Staff-from-Campus-Director</div>
                         </a>
                     </li>
+                    <?php endif; ?>
+                    <?php if ($user_role === 'Admin' || in_array('form_staff_supervisor', $allowed_pages[$user_role] ?? [])): ?>
                     <li class="menu-item <?php echo ($page == 'form_staff_supervisor') ? 'active' : '' ?>">
                         <a href="./?page=form_staff_supervisor" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-edit-alt"></i>
                             <div data-i18n="Marks">Performance-Appraisal-for-Staff-Supervisor</div>
                         </a>
                     </li>
+                    <?php endif; ?>
                 </ul>
             </aside>
             <!-- / Menu -->
@@ -123,12 +150,14 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
                                             </div>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a class="dropdown-item" href="./?page=manage_account">
-                                            <i class="bx bx-user me-2"></i>
-                                            <span class="align-middle">Manage Account</span>
-                                        </a>
-                                    </li>
+                                    <?php if ($user_role === 'Admin' || in_array('manage_account.php', $allowed_pages[$user_role] ?? [])): ?>
+                                        <li>
+                                            <a class="dropdown-item" href="manage_employees.php">
+                                                <i class="bx bx-user me-2"></i>
+                                                <span class="align-middle">Manage Account</span>
+                                            </a>
+                                        </li>
+                                    <?php endif; ?>
                                     <li>
                                         <a class="dropdown-item" href="./Actions.php?a=logout">
                                             <i class="bx bx-power-off me-2"></i>
@@ -184,7 +213,5 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
     <script src="sneat/assets/js/demo.js"></script>
     <!-- Bootstrap Bundle JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-    </script>
 </body>
 </html>

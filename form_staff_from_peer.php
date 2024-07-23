@@ -31,7 +31,7 @@
             font-weight: bold;
             margin-top: 20px;
             text-align: center;
-            display: none; /* Hide total score in normal view */
+            display: none;
         }
         .star-rating {
             font-size: 30px;
@@ -43,7 +43,7 @@
             color: orange;
         }
         .print-score {
-            display: none; /* Hide print score in normal view */
+            display: none;
         }
         @media print {
             #appraisal-buttons {
@@ -53,10 +53,10 @@
                 display: none;
             }
             .print-score {
-                display: inline-block; /* Display print score in print view */
+                display: inline-block;
             }
             .total-score {
-                display: block; /* Display total score in print view */
+                display: block;
             }
         }
     </style>
@@ -104,6 +104,7 @@
             <td>1. Recommends and implements reforms contributing to the attainment of the office goals and objectives.</td>
             <td>
                 <div class="star-rating" id="creativity_and_innovation_1"></div>
+                <input type="hidden" name="creativity_and_innovation_rating_1" id="creativity_and_innovation_1" value="">
                 <span class="print-score" data-rating-id="creativity_and_innovation_1"></span>
             </td>
         </tr>
@@ -111,6 +112,7 @@
             <td>2. When an innovation/modification/enhancement is introduced, builds on it by adding ideas or makes adjustments for better implementation.</td>
             <td>
                 <div class="star-rating" id="creativity_and_innovation_2"></div>
+                <input type="hidden" name="creativity_and_innovation_rating_2" id="creativity_and_innovation_2">
                 <span class="print-score" data-rating-id="creativity_and_innovation_2"></span>
             </td>
         </tr>
@@ -244,72 +246,73 @@
                 </td>
             </tr>
             <!-- Leadership -->
-            <tr>
-                <th colspan="2" class="category-header">Leadership</th>
-            </tr>
-            <tr>
-                <td>1. Knows own limitations and consults peers and subordinates.</td>
-                <td>
-                    <div class="star-rating" id="leadership1Stars"></div>
-                    <span class="print-score" data-rating-id="leadership1Stars"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>2. Passion for work, organization, or agency's clientele.</td>
-                <td>
-                    <div class="star-rating" id="leadership2Stars"></div>
-                    <span class="print-score" data-rating-id="leadership2Stars"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>3. Monitors and evaluates office performance to align with goals and objectives.</td>
-                <td>
-                    <div class="star-rating" id="leadership3Stars"></div>
-                    <span class="print-score" data-rating-id="leadership3Stars"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>4. Sets realistic goals and time frames.</td>
-                <td>
-                    <div class="star-rating" id="leadership4Stars"></div>
-                    <span class="print-score" data-rating-id="leadership4Stars"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>5. Develops subordinates and mentors for effective work performance.</td>
-                <td>
-                    <div class="star-rating" id="leadership5Stars"></div>
-                    <span class="print-score" data-rating-id="leadership5Stars"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>6. Performs staff functions when needed.</td>
-                <td>
-                    <div class="star-rating" id="leadership6Stars"></div>
-                    <span class="print-score" data-rating-id="leadership6Stars"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>7. Plans, organizes, and executes programs using a systematic process.</td>
-                <td>
-                    <div class="star-rating" id="leadership7Stars"></div>
-                    <span class="print-score" data-rating-id="leadership7Stars"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>8. Open to suggestions, comments, and inputs.</td>
-                <td>
-                    <div class="star-rating" id="leadership8Stars"></div>
-                    <span class="print-score" data-rating-id="leadership8Stars"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>9. versatile and humble enough to perform even staff functions when the need arises.</td>
-                <td>
-                    <div class="star-rating" id="leadership9Stars"></div>
-                    <span class="print-score" data-rating-id="leadership9Stars"></span>
-                </td>
-            </tr>
+        <tr>
+            <th colspan="2" class="category-header">Leadership</th>
+        </tr>
+        <tr>
+            <td>1. Knows own limitations and consults peers and subordinates.</td>
+            <td>
+                <div class="star-rating" id="leadership1Stars"></div>
+                <span class="print-score" data-rating-id="leadership1Stars"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>2. Passion for work, organization, or agency's clientele.</td>
+            <td>
+                <div class="star-rating" id="leadership2Stars"></div>
+                <span class="print-score" data-rating-id="leadership2Stars"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>3. Monitors and evaluates office performance to align with goals and objectives.</td>
+            <td>
+                <div class="star-rating" id="leadership3Stars"></div>
+                <span class="print-score" data-rating-id="leadership3Stars"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>4. Sets realistic goals and time frames.</td>
+            <td>
+                <div class="star-rating" id="leadership4Stars"></div>
+                <span class="print-score" data-rating-id="leadership4Stars"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>5. Develops subordinates and mentors for effective work performance.</td>
+            <td>
+                <div class="star-rating" id="leadership5Stars"></div>
+                <span class="print-score" data-rating-id="leadership5Stars"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>6. Performs staff functions when needed.</td>
+            <td>
+                <div class="star-rating" id="leadership6Stars"></div>
+                <span class="print-score" data-rating-id="leadership6Stars"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>7. Plans, organizes, and executes programs using a systematic process.</td>
+            <td>
+                <div class="star-rating" id="leadership7Stars"></div>
+                <span class="print-score" data-rating-id="leadership7Stars"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>8. Open to suggestions, comments, and inputs.</td>
+            <td>
+                <div class="star-rating" id="leadership8Stars"></div>
+                <span class="print-score" data-rating-id="leadership8Stars"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>9. versatile and humble enough to perform even staff functions when the need arises.</td>
+            <td>
+                <div class="star-rating" id="leadership9Stars"></div>
+                <span class="print-score" data-rating-id="leadership9Stars"></span>
+            </td>
+        </tr>
+
     </table>
 
     <div style="margin-bottom: 0.14in">
@@ -325,130 +328,105 @@
         <font face="Cambria, serif">Peer's Name</font>
     </p>
 
-    <div id="appraisal-buttons">
-        <button type="submit" class="btn-primary">Submit Appraisal</button>
-        <button type="button" class="btn-primary" onclick="window.print();">Print</button>
-    </div>
-
     <div class="total-score">
         Total Score: <span id="total">0</span> / 135
         <input type="hidden" id="total_score" name="total_score" value="">
         (<span id="percentage">0%</span>)
     </div>
+    <div id="appraisal-buttons">
+        <button type="submit" class="btn-primary">Submit Appraisal</button>
+        <button type="button" class="btn-primary" onclick="window.print();">Print</button>
+    </div>
 </form>
-
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const starRatings = document.querySelectorAll('.star-rating');
-        const totalScoreElement = document.getElementById('total');
-        const percentageElement = document.getElementById('percentage');
-        const maxScore = 135; // Maximum possible score
+   document.addEventListener("DOMContentLoaded", function() {
+    const starRatings = document.querySelectorAll('.star-rating');
+    const totalScoreElement = document.getElementById('total');
+    const percentageElement = document.getElementById('percentage');
+    const totalScoreInput = document.getElementById('total_score');
+    const maxScore = 135; // Maximum possible score
 
-        starRatings.forEach(rating => {
-            for (let i = 0; i < 5; i++) {
-                const span = document.createElement('span');
-                span.innerHTML = '&#9733;';
-                span.addEventListener('click', function() {
-                    clearSelected(rating);
-                    this.classList.add('selected');
-                    let previousSibling = this.previousElementSibling;
-                    while (previousSibling) {
-                        previousSibling.classList.add('selected');
-                        previousSibling = previousSibling.previousElementSibling;
-                    }
-                    updateTotalScore();
-                });
-                rating.appendChild(span);
-            }
-        });
-
-        function clearSelected(rating) {
-            const stars = rating.querySelectorAll('span');
-            stars.forEach(star => star.classList.remove('selected'));
-        }
-
-        function updateTotalScore() {
-            let totalScore = 0;
-            starRatings.forEach(rating => {
-                const selectedStars = rating.querySelectorAll('.selected').length;
-                totalScore += selectedStars;
+    // Initialize star ratings
+    starRatings.forEach(rating => {
+        for (let i = 0; i < 5; i++) {
+            const span = document.createElement('span');
+            span.innerHTML = '&#9733;';
+            span.addEventListener('click', function() {
+                clearSelected(rating);
+                this.classList.add('selected');
+                let previousSibling = this.previousElementSibling;
+                while (previousSibling) {
+                    previousSibling.classList.add('selected');
+                    previousSibling = previousSibling.previousElementSibling;
+                }
+                updateTotalScore();
             });
-            totalScoreElement.textContent = totalScore;
-            document.getElementById('total_score').value = totalScore; // Update hidden input value
-            updatePercentage(totalScore);
-        }
-
-        function updatePercentage(totalScore) {
-            const percentage = (totalScore / maxScore) * 100;
-            percentageElement.textContent = percentage.toFixed(2) + '%';
-        }
-
-        // Function to update print view
-        function updatePrintView() {
-            const printScoreElements = document.querySelectorAll('.print-score');
-            printScoreElements.forEach(element => {
-                const ratingId = element.getAttribute('data-rating-id');
-                const selectedStars = document.querySelectorAll(`#${ratingId} .selected`).length;
-                element.textContent = selectedStars; // Display the number of stars selected in print view
-            });
-        }
-
-        // Call updatePrintView when printing
-        window.onbeforeprint = function() {
-            updatePrintView();
-        };
-
-        // Optional: Form submission validation (example)
-        const form = document.getElementById('peer');
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form submission for this example
-
-            // Validate form fields
-            const employee = document.getElementById('employee').value.trim();
-            const position = document.getElementById('position').value.trim();
-            const assignment = document.getElementById('assignment').value.trim();
-            const contract = document.getElementById('contract').value.trim();
-            const endContract = document.getElementById('end_contract').value.trim();
-            const assessedBy = document.getElementById('assessed_by').value.trim();
-            const date = document.getElementById('date').value.trim();
-
-            if (!employee || !position || !assignment || !contract || !endContract || !assessedBy || !date) {
-                alert('Please fill in all fields.');
-                return;
-            }
-
-            // Example of submitting the form
-            const formData = new FormData(form);
-            fetch(form.action, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json()) // Assuming the response is JSON
-            .then(data => {
-                // Handle response if needed
-                console.log('Form submitted successfully', data);
-                // Optionally, reset form fields or show success message
-                form.reset();
-                totalScoreElement.textContent = '0';
-                document.getElementById('total_score').value = '';
-                percentageElement.textContent = '0%';
-                clearSelectedStars();
-            })
-            .catch(error => {
-                console.error('Error submitting form', error);
-                // Handle errors if necessary
-            });
-        });
-
-        // Clear selected stars after form submission
-        function clearSelectedStars() {
-            starRatings.forEach(rating => {
-                const stars = rating.querySelectorAll('.selected');
-                stars.forEach(star => star.classList.remove('selected'));
-            });
+            rating.appendChild(span);
         }
     });
-</script>
 
+    function clearSelected(rating) {
+        const stars = rating.querySelectorAll('span');
+        stars.forEach(star => star.classList.remove('selected'));
+    }
+
+    function updateTotalScore() {
+        let totalScore = 0;
+        starRatings.forEach(rating => {
+            const selectedStars = rating.querySelectorAll('.selected').length;
+            totalScore += selectedStars;
+            const ratingId = rating.getAttribute('id');
+            const hiddenInput = document.querySelector(`input[name="${ratingId}"]`);
+            if (hiddenInput) {
+                hiddenInput.value = selectedStars; // Set hidden input value
+            }
+        });
+        totalScoreElement.textContent = totalScore;
+        totalScoreInput.value = totalScore; // Update hidden input value
+        updatePercentage(totalScore);
+    }
+
+    function updatePercentage(totalScore) {
+        const percentage = (totalScore / maxScore) * 100;
+        percentageElement.textContent = percentage.toFixed(2) + '%';
+    }
+
+    // Update print view
+    function updatePrintView() {
+        const printScoreElements = document.querySelectorAll('.print-score');
+        printScoreElements.forEach(element => {
+            const ratingId = element.getAttribute('data-rating-id');
+            const selectedStars = document.querySelectorAll(`#${ratingId} .selected`).length;
+            element.textContent = selectedStars; // Display the number of stars selected in print view
+        });
+    }
+
+    window.onbeforeprint = function() {
+        updatePrintView();
+    };
+});
+
+$(document).ready(function() {
+    $('.star-rating').on('click', 'i', function() {
+        var rating = $(this).index() + 1;
+        $('#creativity_and_innovation_1').val(rating);
+
+        // AJAX request to save the rating
+        $.ajax({
+            type: 'POST',
+            url: 'peer_saved.php',
+            data: {
+                rating: rating
+            },
+            success: function(response) {
+                console.log('Rating saved successfully');
+            },
+            error: function(xhr, status, error) {
+                console.error('Error saving rating:', error);
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>

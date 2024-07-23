@@ -13,7 +13,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGIN |Request Form</title>
+    <title>LOGIN | Request Form</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
@@ -52,15 +52,13 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
                 <div class="card">
                     <div class="card-body">
                         <!-- Logo -->
-                            <div class="app-brand justify-content-center">
-    <a href="index.html" class="app-brand-link gap-2">
-        <span class="app-brand-logo demo">
-            <img src="image/logo.png" alt="Logo" width="50">
-        </span>
-        
-    </a>
-</div>
-
+                        <div class="app-brand justify-content-center">
+                            <a href="index.html" class="app-brand-link gap-2">
+                                <span class="app-brand-logo demo">
+                                    <img src="image/logo.png" alt="Logo" width="50">
+                                </span>
+                            </a>
+                        </div>
                         <!-- /Logo -->
                         <h4 class="mb-2">Welcome Back! 👋</h4>
                         <p class="mb-4">Please sign-in to your account</p>
@@ -85,6 +83,13 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
                             </div>
                         </form>
 
+                        <!-- Link to Registration Page with Icon -->
+                        <div class="text-center mt-3">
+                            <a href="register.php" class="btn btn-outline-primary">
+                                <i class="bx bx-user-plus"></i> Register
+                            </a>
+                        </div>
+
                     </div>
                 </div>
                 <!-- /Login -->
@@ -101,7 +106,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
                 var _el = $('<div>')
                     _el.addClass('pop_msg')
                 _this.find('button').attr('disabled',true)
-                _this.find('button[type="submit"]').text('Logging in sneat')
+                _this.find('button[type="submit"]').text('Logging in...')
                 $.ajax({
                     url:'./Actions.php?a=login',
                     method:'POST',
