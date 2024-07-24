@@ -58,6 +58,9 @@
             .total-score {
                 display: block; /* Display total score in print view */
             }
+            .navbar {
+                display: none;
+            }
         }
     </style>
 </head>

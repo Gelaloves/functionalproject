@@ -34,7 +34,7 @@ CREATE TABLE `admin_list` (
   `password` text NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin_list`
@@ -61,7 +61,7 @@ CREATE TABLE `campus_director` (
   `assessed_by` varchar(100) NOT NULL,
   `date` date DEFAULT NULL,
   `total_score` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -80,7 +80,7 @@ CREATE TABLE `human_resource` (
   `assessed_by` varchar(100) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `total_score` int DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 -- --------------------------------------------------------
 
@@ -98,7 +98,7 @@ CREATE TABLE `peer` (
   `assessed_by` varchar(100) NOT NULL,
   `date` date NOT NULL,
   `total_score` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -117,7 +117,7 @@ CREATE TABLE `supervisor` (
   `assessed_by` varchar(100) NOT NULL,
   `date` date DEFAULT NULL,
   `total_score` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables

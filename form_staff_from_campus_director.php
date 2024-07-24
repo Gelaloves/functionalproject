@@ -45,6 +45,20 @@
         .star-rating .selected {
             color: orange;
         }
+        .navbar {
+            display: none;
+        }
+        .number-rating {
+            display: none;
+        }
+        @media print {
+            .star-rating {
+                display: none;
+            }
+            .number-rating {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
@@ -55,215 +69,150 @@
 <br>
 <br>
 <br>
-    <form method="post" action="save_appraisal.php" id="campus_director_form">
-        <input type="hidden" name="form_type" value="campus_director">
-       <div class="mb-3">
-        <div class="mb-3">
-            <label for="employee">Name:</label>
-            <input type="text" name="employee" id="employee" required >
-            <span id="" class="error-message"></span>
-            <label for="position">Position:</label>
-            <input type="text" name="position" id="position" required >
-            <span id="" class="error-message"></span>
-        </div>
+<form method="post" action="save_appraisal.php" id="hr_form">
+    <input type="hidden" name="form_type" value="human_resource">
+    <div class="mb-3">
+        <label for="employee">Name:</label>
+        <input type="text" name="employee" id="employee" required>
+        <span id="" class="error-message"></span>
+        <label for="position">Position:</label>
+        <input type="text" name="position" id="position" required>
+        <span id="" class="error-message"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="assignment">Place of Assignment:</label>
+        <input name="assignment" id="assignment" required>
+        <span id="" class="error-message"></span>
+        <label for="contract">Contract Period:</label>
+        <input type="date" name="contract" id="contract" required>
+        <label for="contract">End Period:</label>
+        <input type="date" name="contract" id="contract" required>
+        <span id="" class="error-message"></span>
+    </div>
     
-        <div class="mb-3">
-            <label for="assignment">Place of Assignment:</label>
-            <input name="assignment" id="assignment" required>
-            <span id="" class="error-message"></span></input>
-            <label for="contract">Contract Period:</label>
-            <input type="date" name="contract" id="contract" required>
-            <label for="contract">End Period:</label>
-            <input type="date" name="contract" id="contract" required>
-            <span id="" class="error-message"></span>
-        </div>
-        
-<p style="line-height: 100%; margin-right: -0.32in; margin-bottom: 0.14in">
-  <font face="Cambria, serif">Kindly provide evaluation for your staff
-  based on their skill and trait factors.</font></p>
-  <p lang="en-US" style="line-height: 100%; margin-bottom: 0in"><font face="Cambria, serif"><font size="2" style="font-size: 10pt"><b>Legend: </b></font></font><font face="Cambria, serif"><font size="2" style="font-size: 10pt">Q
-&ndash; Quality, E &ndash; Efficiency, T &ndash;
-Timeliness, A &ndash; Average, &ndash;</font></font></p>
-<p lang="en-US" style="line-height: 100%; margin-bottom: 0in"><br/>
-  <p lang="en-US" style="line-height: 100%; margin-bottom: 0in"><font face="Cambria, serif"><font size="2" style="font-size: 10pt"><b>Numerical
-&amp; Adjectival Rating: </b></font></font><font face="Cambria, serif"><font size="2" style="font-size: 10pt">5
-&ndash; Outstanding, 4 &ndash; Very Satisfactory, 3 &ndash;
-Satisfactory, 2 &ndash; Unsatisfactory, 1 &ndash; Poor</font></font></p>
-<p lang="en-US" style="line-height: 100%; margin-bottom: 0in"><br/></p>
+    <p style="line-height: 100%; margin-right: -0.32in; margin-bottom: 0.14in">
+        <font face="Cambria, serif">Kindly provide evaluation for your staff based on their skill and trait factors.</font></p>
+    <p lang="en-US" style="line-height: 100%; margin-bottom: 0in"><font face="Cambria, serif"><font size="2" style="font-size: 10pt"><b>Legend: </b></font></font><font face="Cambria, serif"><font size="2" style="font-size: 10pt">Q – Quality, E – Efficiency, T – Timeliness, A – Average, –</font></font></p>
+    <p lang="en-US" style="line-height: 100%; margin-bottom: 0in"><br/>
+        <p lang="en-US" style="line-height: 100%; margin-bottom: 0in"><font face="Cambria, serif"><font size="2" style="font-size: 10pt"><b>Numerical & Adjectival Rating: </b></font></font><font face="Cambria, serif"><font size="2" style="font-size: 10pt">5 – Outstanding, 4 – Very Satisfactory, 3 – Satisfactory, 2 – Unsatisfactory, 1 – Poor</font></font></p>
+    <p lang="en-US" style="line-height: 100%; margin-bottom: 0in"><br/></p>
 
-        <table>
-            <tr>
-                <th>Evaluation Factors</th>
-                <th></th>
-                <th>Q</th>
-                <th>T</th>
-                <th>E</th>
-                <th>A</th>
-            </tr>
-            <!-- Creativity and Innovation -->
-            <tr>
-                <th colspan="2" class="category-header">Performance Skill Factors</th>
-            </tr>
-            <tr>
-                <td>Work Performance</td>
-                <td>Recommends and implements reforms contributing to the attainment of the office goals and objectives.</td>
-                <td><div class="star-rating" id="q" data-category="q"></div></td>
-                <td><div class="star-rating" id="t" data-category="t"></div></td>
-                <td><div class="star-rating" id="e" data-category="e"></div></td>
-                <td><div class="star-rating" id="avg" data-category="avg"></div></td>
-            </tr>
-            <tr>
-                <td>Cooperation & Teamwork</td>
-                <td>Integrates own activities with fellow employees, readily offers and accepts assistance to accomplish tasks and demonstrates cooperativeness</td>
-                <td><div class="star-rating" id="q1" data-category="q"></div></td>
-                <td><div class="star-rating" id="t1" data-category="t"></div></td>
-                <td><div class="star-rating" id="e1" data-category="e"></div></td>
-                <td><div class="star-rating" id="avg1" data-category="avg"></div></td>
-            </tr>
-            <tr>
-                <td>Communication</td>
-                <td>Communicates effectively (written, oral, presentation) with clients, business customers & staff members</td>
-                <td><div class="star-rating" id="q2" data-category="q"></div></td>
-                <td><div class="star-rating" id="t2" data-category="t"></div></td>
-                <td><div class="star-rating" id="e2" data-category="e"></div></td>
-                <td><div class="star-rating" id="avg2" data-category="avg"></div></td>
-            </tr>
+    <table>
+        <tr>
+            <th>Evaluation Factors</th>
+            <th></th>
+            <th>Q</th>
+            <th>T</th>
+            <th>E</th>
+            <th>A</th>
+        </tr>
+        <!-- Creativity and Innovation -->
+        <tr>
+            <th colspan="2" class="category-header">Performance Skill Factors</th>
+        </tr>
+        <tr>
+            <td>Work Performance</td>
+            <td>Recommends and implements reforms contributing to the attainment of the office goals and objectives.</td>
+            <td><div class="star-rating" id="q" data-category="q"></div><div class="number-rating" id="q_num"></div></td>
+            <td><div class="star-rating" id="t" data-category="t"></div><div class="number-rating" id="t_num"></div></td>
+            <td><div class="star-rating" id="e" data-category="e"></div><div class="number-rating" id="e_num"></div></td>
+            <td><div class="star-rating" id="avg" data-category="avg"></div><div class="number-rating" id="avg_num"></div></td>
+        </tr>
+        <tr>
+            <td>Cooperation & Teamwork</td>
+            <td>Integrates own activities with fellow employees, readily offers and accepts assistance to accomplish tasks and demonstrates cooperativeness</td>
+            <td><div class="star-rating" id="q1" data-category="q"></div><div class="number-rating" id="q1_num"></div></td>
+            <td><div class="star-rating" id="t1" data-category="t"></div><div class="number-rating" id="t1_num"></div></td>
+            <td><div class="star-rating" id="e1" data-category="e"></div><div class="number-rating" id="e1_num"></div></td>
+            <td><div class="star-rating" id="avg1" data-category="avg"></div><div class="number-rating" id="avg1_num"></div></td>
+        </tr>
+        <tr>
+            <td>Communication</td>
+            <td>Communicates effectively (written, oral, presentation) with clients, business customers & staff members</td>
+            <td><div class="star-rating" id="q2" data-category="q"></div><div class="number-rating" id="q2_num"></div></td>
+            <td><div class="star-rating" id="t2" data-category="t"></div><div class="number-rating" id="t2_num"></div></td>
+            <td><div class="star-rating" id="e2" data-category="e"></div><div class="number-rating" id="e2_num"></div></td>
+            <td><div class="star-rating" id="avg2" data-category="avg"></div><div class="number-rating" id="avg2_num"></div></td>
+        </tr>
 
-            <tr>
-                <th colspan="2" class="category-header">Performance Traits Factors</th>
-            </tr>
-            <tr>
-                <td>Dependability (Attendance & Commitment)</td>
-                <td>Reports to work on time</td>
-                <td><div class="star-rating" id="q3" data-category="q"></div></td>
-                <td><div class="star-rating" id="t3" data-category="t"></div></td>
-                <td><div class="star-rating" id="e3" data-category="e"></div></td>
-                <td><div class="star-rating" id="avg3" data-category="avg"></div></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>Uses time constructively productively</td>
-                <td><div class="star-rating" id="q4" data-category="q"></div></td>
-                <td><div class="star-rating" id="t4" data-category="t"></div></td>
-                <td><div class="star-rating" id="e4" data-category="e"></div></td>
-                <td><div class="star-rating" id="avg4" data-category="avg"></div></td>
-            </tr>
-            <tr>
-                <td>Initiative</td>
-                <td>Anticipates required tasks & acts accordingly; demonstrates willingness & ability to take risks; makes creative uses of available resources to deliver assigned tasks</td>
-                <td><div class="star-rating" id="q5" data-category="q"></div></td>
-                <td><div class="star-rating" id="t5" data-category="t"></div></td>
-                <td><div class="star-rating" id="e5" data-category="e"></div></td>
-                <td><div class="star-rating" id="avg5" data-category="avg"></div></td>
-            </tr>
-            <tr>
-                <td>Professional Presentation</td>
-                <td>Demonstrates a high level of professionalism like mutual trust & support for fellow employer, integrity & dedication to the organization</td>
-                <td><div class="star-rating" id="q6" data-category="q"></div></td>
-                <td><div class="star-rating" id="t6" data-category="t"></div></td>
-                <td><div class="star-rating" id="e6" data-category="e"></div></td>
-                <td><div class="star-rating" id="avg6" data-category="avg"></div></td>
-            </tr>
-        </table>
-
-        <div class="total-score">
-            Total Score: <span id="total">0</span> / 35
-            <input type="hidden" id="total_score" name="total_score" value="">
-            <span id="total-percentage"></span>
-        </div>
-
-
-        <div style="margin-bottom: 0.14in">
-            <label for="comments"><b>Comments for Development Purposes:</b></label><br>
-            <textarea id="comments" name="comments" rows="4" cols="50"></textarea><br>
-        </div>
-
-        <br><br>
-             <label for="comments"><b>Recommendation:</b></label>
-             <br><br>
-            <input type="checkbox" id="renewal" name="recommendation" value="Renewal">
-            <label for="renewal">For renewal</label>
-            <input type="checkbox" id="non_renewal" name="recommendation" value="Non-Renewal">
-            <label for="non_renewal">Non-renewal</label>
-            <br><br>
-            <label for="assessed-by">Assessed by:</label>
-            <input type="text" id="assessed_by" name="assessed_by" style="width: 60%;">
-            <label for="date">Date:</label>
-            <input type="date" id="date" name="date">
-        <p style="line-height: 100%; margin-left: 2.5in; margin-bottom: 0in">
-            <font face="Cambria, serif">HRMO</font>
-        </p>
-        <br>
-            <button type="submit">Submit Appraisal</button>
-            <button type="button" onclick="window.print();">Print</button>
-    </form>
-
+        <tr>
+            <th colspan="2" class="category-header">Performance Traits Factors</th>
+        </tr>
+        <tr>
+            <td>Dependability (Attendance & Commitment)</td>
+            <td>Reports to work on time</td>
+            <td><div class="star-rating" id="q3" data-category="q"></div><div class="number-rating" id="q3_num"></div></td>
+            <td><div class="star-rating" id="t3" data-category="t"></div><div class="number-rating" id="t3_num"></div></td>
+            <td><div class="star-rating" id="e3" data-category="e"></div><div class="number-rating" id="e3_num"></div></td>
+            <td><div class="star-rating" id="avg3" data-category="avg"></div><div class="number-rating" id="avg3_num"></div></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Uses time constructively productively</td>
+            <td><div class="star-rating" id="q4" data-category="q"></div><div class="number-rating" id="q4_num"></div></td>
+            <td><div class="star-rating" id="t4" data-category="t"></div><div class="number-rating" id="t4_num"></div></td>
+            <td><div class="star-rating" id="e4" data-category="e"></div><div class="number-rating" id="e4_num"></div></td>
+            <td><div class="star-rating" id="avg4" data-category="avg"></div><div class="number-rating" id="avg4_num"></div></td>
+        </tr>
+        <tr>
+            <td>Leadership</td>
+            <td>Demonstrates the ability to direct, control and guide individuals or teams towards achieving a common goal</td>
+            <td><div class="star-rating" id="q5" data-category="q"></div><div class="number-rating" id="q5_num"></div></td>
+            <td><div class="star-rating" id="t5" data-category="t"></div><div class="number-rating" id="t5_num"></div></td>
+            <td><div class="star-rating" id="e5" data-category="e"></div><div class="number-rating" id="e5_num"></div></td>
+            <td><div class="star-rating" id="avg5" data-category="avg"></div><div class="number-rating" id="avg5_num"></div></td>
+        </tr>
+        <tr>
+            <td>Professional Presentation</td>
+            <td>Demonstrates a high level of professionalism like mutual trust & support for fellow employer, integrity & dedication to the organization</td>
+            <td><div class="star-rating" id="q6" data-category="q"></div><div class="number-rating" id="q6_num"></div></td>
+            <td><div class="star-rating" id="t6" data-category="t"></div><div class="number-rating" id="t6_num"></div></td>
+            <td><div class="star-rating" id="e6" data-category="e"></div><div class="number-rating" id="e6_num"></div></td>
+            <td><div class="star-rating" id="avg6" data-category="avg"></div><div class="number-rating" id="avg6_num"></div></td>
+        </tr>
+    </table>
+    <div class="total-score">
+        Total Score: <span id="total">0</span> / 35
+        <input type="hidden" id="total_score" name="total_score" value="">
+        <span id="total-percentage"></span>
+    </div>
+    <div style="margin-bottom: 0.14in">
+        <label for="comments"><b>Comments for Development Purposes:</b></label><br>
+        <textarea id="comments" name="comments" rows="4" cols="50"></textarea><br>
+    </div>
+    <br><br>
+    <label for="recommendation"><b>Recommendation:</b></label>
+    <br><br>
+    <input type="checkbox" id="renewal" name="recommendation" value="Renewal">
+    <label for="renewal">For renewal</label>
+    <input type="checkbox" id="non_renewal" name="recommendation" value="Non-Renewal">
+    <label for="non_renewal">Non-renewal</label>
+    <br><br>
+    <label for="assessed_by">Assessed by:</label>
+    <input type="text" id="assessed_by" name="assessed_by" style="width: 60%;">
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date">
+    <p style="line-height: 100%; margin-left: 2.5in; margin-bottom: 0in">
+        <font face="Cambria, serif">HRMO</font>
+    </p>
+    <br>
+    <button type="submit" id="submitAppraisal">Submit Appraisal</button>
+    <button type="button" id="printButton" onclick="hideButtons()">Print</button>
+</form>
 
 <script>
     function calculateTotal() {
         let total = 0;
-        // Calculate total score based on selected star ratings
-        total += getStarRatingValue("creativity1");
-        total += getStarRatingValue("creativity2");
-        total += getStarRatingValue("creativity3");
-        total += getStarRatingValue("critical1");
-        total += getStarRatingValue("critical2");
-        total += getStarRatingValue("critical3");
-        total += getStarRatingValue("environmental1");
-        total += getStarRatingValue("environmental2");
-        total += getStarRatingValue("environmental3");
-        total += getStarRatingValue("environmental4");
-        total += getStarRatingValue("honesty1");
-        total += getStarRatingValue("honesty2");
-        total += getStarRatingValue("honesty3");
-        total += getStarRatingValue("honesty4");
-        total += getStarRatingValue("judgement1");
-        total += getStarRatingValue("judgement2");
-        total += getStarRatingValue("judgement3");
-        total += getStarRatingValue("judgement4");
-        total += getStarRatingValue("leadership1");
-        total += getStarRatingValue("leadership2");
-        total += getStarRatingValue("leadership3");
-        total += getStarRatingValue("leadership4");
-        total += getStarRatingValue("leadership5");
-        total += getStarRatingValue("leadership6");
-        total += getStarRatingValue("leadership7");
-        total += getStarRatingValue("leadership8");
+        const maxScore = 35; // Total score out of
+        const starRatings = document.querySelectorAll('.star-rating[data-category="avg"]');
+        starRatings.forEach(rating => {
+            total += parseInt(rating.getAttribute('data-stars')) || 0;
+        });
 
-        // Update total score
         document.getElementById("total").textContent = total;
+        document.getElementById("total_score").value = total;
     }
-
-    function getStarRatingValue(id) {
-        const stars = document.getElementById(id + "Stars").querySelectorAll(".star-rating span");
-        let rating = 0;
-        stars.forEach(star => {
-            if (star.classList.contains("selected")) {
-                rating += 1;
-            }
-        });
-        return rating;
-    }
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    const starRows = document.querySelectorAll('tr:not(.category-header)'); // Select all table rows except header rows
-
-    starRows.forEach(row => {
-        const starRatings = row.querySelectorAll('.star-rating');
-
-        starRatings.forEach(starRating => {
-            updateStars(starRating, 0); // Initialize star ratings
-
-            starRating.addEventListener('click', function(event) {
-                const selectedStars = parseInt(event.target.getAttribute('data-stars'));
-                updateStars(starRating, selectedStars);
-                calculateAverage(row); // Recalculate average when stars are updated
-                calculateTotalScore(); // Recalculate total score after each star update
-            });
-        });
-    });
-
     function updateStars(starRating, stars) {
         starRating.innerHTML = '';
         const maxStars = 5;
@@ -277,6 +226,10 @@ document.addEventListener('DOMContentLoaded', function() {
             starRating.appendChild(star);
         }
         starRating.setAttribute('data-stars', stars);
+
+        // Update number rating
+        const numberRating = starRating.nextElementSibling;
+        numberRating.innerHTML = stars;
     }
 
     function calculateAverage(row) {
@@ -288,8 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const avgRating = row.querySelector('.star-rating[data-category="avg"]');
         updateStars(avgRating, avgStars);
 
-        // Update percentage display
-        const percentage = Math.round((avgStars / 5) * 100); // Calculate percentage based on a scale of 5 stars
+        const percentage = Math.round((avgStars / 5) * 100);
         const percentageDisplay = row.querySelector('.percentage');
         if (percentageDisplay) {
             percentageDisplay.textContent = ' (' + percentage + '%)';
@@ -304,18 +256,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         document.getElementById('total_score').value = totalScore;
-        
+
         const totalScoreDisplay = document.getElementById('total');
         totalScoreDisplay.textContent = totalScore;
 
-        // Update total percentage display
-        const totalPercentage = Math.round((totalScore / (avgRows.length * 5)) * 100); // Calculate percentage out of possible total
+        const totalPercentage = Math.round((totalScore / (avgRows.length * 5)) * 100);
         const totalPercentageDisplay = document.getElementById('total-percentage');
         if (totalPercentageDisplay) {
             totalPercentageDisplay.textContent = ' (' + totalPercentage + '%)';
         }
 
-        // Automatically update recommendation based on total percentage
         updateRecommendation(totalPercentage);
     }
 
@@ -332,10 +282,57 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Initial calculation when the page loads
-    calculateTotalScore();
-});
+    document.addEventListener('DOMContentLoaded', function() {
+        const starRows = document.querySelectorAll('tr:not(.category-header)');
 
+        starRows.forEach(row => {
+            const starRatings = row.querySelectorAll('.star-rating');
+
+            starRatings.forEach(starRating => {
+                updateStars(starRating, 0);
+
+                starRating.addEventListener('click', function(event) {
+                    const selectedStars = parseInt(event.target.getAttribute('data-stars'));
+                    updateStars(starRating, selectedStars);
+                    calculateAverage(row);
+                    calculateTotalScore();
+                });
+            });
+        });
+
+        calculateTotalScore();
+    });
+
+    document.getElementById('hr_form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(this);
+
+        fetch('save_appraisal.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.blob())
+        .then(blob => {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'appraisal_form.pdf';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        })
+        .catch(error => console.error('Error:', error));
+    });
+
+    function hideButtons() {
+        document.getElementById('submitAppraisal').style.display = 'none';
+        document.getElementById('printButton').style.display = 'none';
+        window.print();
+        document.getElementById('submitAppraisal').style.display = 'block';
+        document.getElementById('printButton').style.display = 'block';
+    }
 </script>
 </body>
 </html>
