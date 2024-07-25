@@ -8,6 +8,52 @@
             font-family: Arial, sans-serif;
             margin: 20px;
         }
+        input[type="date"] {
+            width: 15%;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius:  5px;
+            box-sizing: border-box;
+        } 
+        textarea {
+            width: 50%;
+            height: 100px; /* Adjust height as needed */
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="text"] {
+            width: 30%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius:  5px;
+            box-sizing: border-box;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button[type="submit"] {
+            background-color: #28a745; /* Green for Submit */
+        }
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
+        button#printButton {
+            background-color: #007bff; /* Blue for Print */
+        }
+        button#printButton:hover {
+            background-color: #0056b3;
+        }
         h1 {
             color: #2E8B57;
             text-align: center;
@@ -63,13 +109,9 @@
 </head>
 <body>
 
-<h2>Performance Appraisal for Staff</h2>
-<h2>(From Human Resource Management Office)</h2>
-
+<h2 style="text-align:center">Performance Appraisal for Staff <br>(From Human Resource Management Office)</h2>
 <br>
-<br>
-<br>
-<form method="post" action="save_appraisal.php" id="hr_form">
+<form method="post" action="save_hr.php" id="hr_form">
     <input type="hidden" name="form_type" value="human_resource">
     <div class="mb-3">
         <label for="employee">Name:</label>
@@ -82,7 +124,7 @@
 
     <div class="mb-3">
         <label for="assignment">Place of Assignment:</label>
-        <input name="assignment" id="assignment" required>
+        <input type="text" name="assignment" id="assignment" required>
         <span id="" class="error-message"></span>
         <label for="contract">Contract Period:</label>
         <input type="date" name="contract" id="contract" required>
@@ -181,16 +223,15 @@
         <label for="comments"><b>Comments for Development Purposes:</b></label><br>
         <textarea id="comments" name="comments" rows="4" cols="50"></textarea><br>
     </div>
-    <br><br>
     <label for="recommendation"><b>Recommendation:</b></label>
     <br><br>
     <input type="checkbox" id="renewal" name="recommendation" value="Renewal">
     <label for="renewal">For renewal</label>
     <input type="checkbox" id="non_renewal" name="recommendation" value="Non-Renewal">
     <label for="non_renewal">Non-renewal</label>
-    <br><br>
+    <br>
     <label for="assessed_by">Assessed by:</label>
-    <input type="text" id="assessed_by" name="assessed_by" style="width: 60%;">
+    <input type="text" id="assessed_by" name="assessed_by" style="width: 50%;">
     <label for="date">Date:</label>
     <input type="date" id="date" name="date">
     <p style="line-height: 100%; margin-left: 2.5in; margin-bottom: 0in">
