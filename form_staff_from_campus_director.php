@@ -8,10 +8,6 @@
             font-family: Arial, sans-serif;
             margin: 20px;
         }
-        .center-text {
-            text-align: center;
-        }
-
         .category-header {
             font-weight: bold;
             font-size: 1.2em;
@@ -62,19 +58,23 @@
             .total-score {
                 display: block; /* Display total score in print view */
             }
+            /* Hide the navigation bar and any other elements you don't want in the print view */
+            .navbar, .header, .footer, .extra-element {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
 
-  <h2>Performance Appraisal for Staff </h2>
- <h2>(From Campus Director)</h2>
+ <h2>Performance Appraisal for Staff </h2>
+ <h2>(From Human Resource Management Office)</h2>
 
 <br>
 <br>
 <br>
     <form method="post" action="save_appraisal.php" id="hr_form">
-        <input type="hidden" name="form_type" value="human_resource">
+        <input type="hidden" name="form_type" value="campus_director">
        <div class="mb-3">
         <div class="mb-3">
             <label for="employee">Name:</label>
@@ -131,7 +131,7 @@ Satisfactory, 2 &ndash; Unsatisfactory, 1 &ndash; Poor</font></font></p>
         </tr>
         <tr>
             <td>Cooperation & Teamwork</td>
-            <td>Integrates own activities with fellow employees...</td>
+            <td>Integrates own activities with fellow employees, readily offers and accepts assistance to accomplish tasks and demonstrates cooperativeness.</td>
             <td><div class="star-rating" id="q1" data-category="q"></div><span class="print-score" data-rating-id="q1"></span></td>
             <td><div class="star-rating" id="t1" data-category="t"></div><span class="print-score" data-rating-id="t1"></span></td>
             <td><div class="star-rating" id="e1" data-category="e"></div><span class="print-score" data-rating-id="e1"></span></td>
@@ -139,7 +139,7 @@ Satisfactory, 2 &ndash; Unsatisfactory, 1 &ndash; Poor</font></font></p>
         </tr>
         <tr>
             <td>Communication</td>
-            <td>Communicates effectively with clients...</td>
+            <td>Communicates effectively (written, oral, presentation) with clients, business customers & staff members.</td>
             <td><div class="star-rating" id="q2" data-category="q"></div><span class="print-score" data-rating-id="q2"></span></td>
             <td><div class="star-rating" id="t2" data-category="t"></div><span class="print-score" data-rating-id="t2"></span></td>
             <td><div class="star-rating" id="e2" data-category="e"></div><span class="print-score" data-rating-id="e2"></span></td>
@@ -159,7 +159,7 @@ Satisfactory, 2 &ndash; Unsatisfactory, 1 &ndash; Poor</font></font></p>
         </tr>
         <tr>
             <td></td>
-            <td>Uses time constructively...</td>
+            <td>Uses time constructively productively.</td>
             <td><div class="star-rating" id="q4" data-category="q"></div><span class="print-score" data-rating-id="q4"></span></td>
             <td><div class="star-rating" id="t4" data-category="t"></div><span class="print-score" data-rating-id="t4"></span></td>
             <td><div class="star-rating" id="e4" data-category="e"></div><span class="print-score" data-rating-id="e4"></span></td>
@@ -167,7 +167,7 @@ Satisfactory, 2 &ndash; Unsatisfactory, 1 &ndash; Poor</font></font></p>
         </tr>
         <tr>
             <td>Initiative</td>
-            <td>Anticipates required tasks...</td>
+            <td>Anticipates required tasks & acts accordingly; demonstrates willingness & ability to take risks; makes creative uses of available resources to deliver assigned tasks.</td>
             <td><div class="star-rating" id="q5" data-category="q"></div><span class="print-score" data-rating-id="q5"></span></td>
             <td><div class="star-rating" id="t5" data-category="t"></div><span class="print-score" data-rating-id="t5"></span></td>
             <td><div class="star-rating" id="e5" data-category="e"></div><span class="print-score" data-rating-id="e5"></span></td>
@@ -175,7 +175,7 @@ Satisfactory, 2 &ndash; Unsatisfactory, 1 &ndash; Poor</font></font></p>
         </tr>
         <tr>
             <td>Professional Presentation</td>
-            <td>Demonstrates a high level of professionalism...</td>
+            <td>Demonstrates a high level of professionalism like mutual trust & support for fellow employer, integrity & dedication to the organization.</td>
             <td><div class="star-rating" id="q6" data-category="q"></div><span class="print-score" data-rating-id="q6"></span></td>
             <td><div class="star-rating" id="t6" data-category="t"></div><span class="print-score" data-rating-id="t6"></span></td>
             <td><div class="star-rating" id="e6" data-category="e"></div><span class="print-score" data-rating-id="e6"></span></td>

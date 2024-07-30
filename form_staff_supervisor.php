@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body{
+        body {
             font-family: Arial, sans-serif;
             margin: 20px;
         }
@@ -58,19 +58,28 @@
             .total-score {
                 display: block; /* Display total score in print view */
             }
+            /* Hide the navigation bar and any other elements you don't want in the print view */
+            .navbar, .header, .footer, .extra-element {
+                display: none;
+            }
+            /* Add background image for print view */
+            body {
+                background: url('image/coppy.jpg') no-repeat center center; /* Adjust path and image properties as needed */
+                background-size: cover; /* Make sure background covers the page */
+            }
         }
     </style>
 </head>
 <body>
 
  <h2>Performance Appraisal for Staff </h2>
- <h2>(From Supervisor)</h2>
+ <h2>(From Human Resource Management Office)</h2>
 
 <br>
 <br>
 <br>
     <form method="post" action="save_appraisal.php" id="hr_form">
-        <input type="hidden" name="form_type" value="human_resource">
+        <input type="hidden" name="form_type" value="supervisor">
        <div class="mb-3">
         <div class="mb-3">
             <label for="employee">Name:</label>

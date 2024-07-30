@@ -58,6 +58,10 @@
             .total-score {
                 display: block; /* Display total score in print view */
             }
+            /* Hide the navigation bar and any other elements you don't want in the print view */
+            .navbar, .header, .footer, .extra-element {
+                display: none;
+            }
         }
     </style>
 </head>
