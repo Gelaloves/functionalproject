@@ -65,7 +65,7 @@ if (!in_array($page, $allowed_pages[$user_role] ?? [])) {
                     <a href="index.html" class="app-brand-link">
                         <!-- Wrap logo inside link with dropdown toggle -->
                         <span class="app-brand-logo demo">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a href="javascript:void(0);" aria-expanded="false">
                                 <img src="image/logo.png" alt="Logo" class="w-px-40 h-auto rounded-circle">
                             </a>
                         </span>

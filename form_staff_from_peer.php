@@ -8,7 +8,55 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        input[type="date"] {
+            width: 20%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius:  5px;
+            box-sizing: border-box;
+        } 
+        textarea {
+            width: 100%;
+            height: 100px; /* Adjust height as needed */
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="text"] {
+            width: 25%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius:  5px;
+            box-sizing: border-box;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button[type="submit"] {
+            background-color: #28a745; /* Green for Submit */
+        }
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
+        button#printButton {
+            background-color: #007bff; /* Blue for Print */
+        }
+        button#printButton:hover {
+            background-color: #0056b3;
         }
         .category-header {
             font-weight: bold;
@@ -65,13 +113,14 @@
             .navbar, .header, .footer, .extra-element {
                 display: none;
             }
+            .navbar {
+                display: none;
+            }
         }
     </style
 </head>
 <body>
-<h1>Performance-Appraisal-for-Staff-from-Peer</h1>
-<h2>(From Peer)</h2>
-
+<h1 style="font-size: 25pt">Performance Appraisal for Staff from Peer (From Peer)</h1>
 <form method="post" action="peer_saved.php" id="peer">
     <input type="hidden" name="form_type" value="peer">
     <div class="mb-3">
